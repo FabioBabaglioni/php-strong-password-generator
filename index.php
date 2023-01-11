@@ -9,7 +9,7 @@
 <body>
 
     <?php
-
+    session_start();
         include __DIR__ . "/helper.php";
         $lunghezza = $_GET["number"];
     ?>
@@ -23,11 +23,17 @@
     </form>
 
     <?php
-        echo "<h2>Lunghezza password: $lunghezza </h2>" ;
 
-        echo generatePassword($lunghezza);
-    ;
-    
+        if($lunghezza){
+
+            header("location: ./landingPage.php");
+        }
+
+        $_SESSION['lenght'] = $lunghezza;
+
+        $paswordGenerata = generatePassword($lunghezza);
+
+        $_SESSION['password'] = $paswordGenerata;
     ?>
 
 </body>
