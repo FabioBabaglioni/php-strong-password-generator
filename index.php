@@ -9,6 +9,8 @@
 <body>
 
     <?php
+
+        include __DIR__ . "/helper.php";
         $lunghezza = $_GET["number"];
     ?>
 
@@ -23,32 +25,9 @@
     <?php
         echo "<h2>Lunghezza password: $lunghezza </h2>" ;
 
-        
-        function generatePassword($lunghezza ) {
-            $caratteri = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.@-';
-
-            // conteggio lunghezz stringa
-            $count = mb_strlen($caratteri);
-
-            // var_dump($count);
-
-            // ciclo for per la creazione della pasword della lunghezza ideale 
-            for ($i = 0, $risultato = ''; $i < $lunghezza ; $i++) {
-
-                // mi va a recuperare in maniera randomica i caratteri 
-                $index = rand(0, $count - 1);
-
-                // var_dump($index);
-
-                // mi creo il risultato della pasword
-                $risultato .= mb_substr($caratteri, $index, 1);
-            }
-        
-            return $risultato;
-        }
-        
         echo generatePassword($lunghezza);
     ;
+    
     ?>
 
 </body>
